@@ -1,139 +1,97 @@
-# Totem de Senhas 🎫
+# 🎫 Totem de Senhas - Simulador de Filas de Atendimento
 
-Aplicativo mobile desenvolvido com **Ionic Framework + Angular**, que simula um sistema de gerenciamento de filas de atendimento, similar aos totens utilizados em hospitais, clínicas e repartições públicas. O app permite emitir senhas por tipo, chamar senhas na ordem da fila e visualizar relatórios de atendimento.
-
----
-
-## 📱 Funcionalidades
-
-### Aba 1 — Emitir Senha
-- Três tipos de senha disponíveis:
-  - **Senha Geral (SG)** — atendimento padrão
-  - **Senha Prioritária (SP)** — para pessoas com prioridade
-  - **Senha Exame (SE)** — para realização de exames
-- Ao clicar em um tipo, gera uma senha com formato: `YYMMDD-TIPO#`
-  - Exemplo: `260615-SG1` → emitida em 15/06/2026, Senha Geral número 1
-- A senha gerada é exibida em campo de leitura na tela
-- Senhas ficam armazenadas em fila para serem chamadas posteriormente
-
-### Aba 2 — Chamar Senha
-- Botão **"Chamar senha"** que chama a próxima senha da fila
-- Exibe o histórico de senhas chamadas durante a sessão
-- Simula o painel de atendimento do operador
-
-### Aba 3 — Relatório
-- Dashboard com contadores em tempo real:
-  - Total de senhas emitidas
-  - Senhas Gerais emitidas
-  - Senhas Prioritárias emitidas
-  - Senhas de Exame emitidas
+![Demonstração do Totem de Senhas](totem/src/assets/icon/Totem.png)
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## 📖 A História do Projeto (Storytelling)
 
-| Tecnologia | Versão | Uso |
-|---|---|---|
-| [Angular](https://angular.io/) | 16 | Framework principal |
-| [Ionic Framework](https://ionicframework.com/) | 7 | Componentes UI mobile |
-| [TypeScript](https://www.typescriptlang.org/) | ~5.0 | Linguagem principal |
-| [RxJS](https://rxjs.dev/) | ~7.8 | Programação reativa |
-| [Cordova SQLite Storage](https://github.com/storesafe/cordova-sqlite-storage) | 6.1 | Persistência local (configurado) |
+Imagine que você entra em uma clínica médica, um banco ou um órgão público movimentado. A primeira coisa que você faz é se dirigir a um totem eletrônico, pressionar um botão e retirar um papelzinho com sua senha. Minutos depois, uma tela sonora chama a sua senha e indica a mesa de atendimento. 
+
+Essa dinâmica, tão comum no nosso cotidiano, é o resultado de uma engenharia de software focada em organização de processos e experiência do usuário. 
+
+Este **Totem de Senhas** nasceu como um **projeto acadêmico** com um propósito claro: **compreender, modelar e simular na prática o funcionamento por trás desses sistemas de gerenciamento de filas.** Mais do que apenas linhas de código, este projeto representa a ponte entre os desafios de organização do mundo real e a solução lógica desenvolvida através da programação de computadores.
 
 ---
 
-## 🚀 Como Rodar o Projeto
+## 💡 Como Funciona? (Explicado de Forma Simples)
+
+O sistema foi dividido em três partes intuitivas, simulando as três pontas de um atendimento real:
+
+### 1. 🎫 Emissão de Senhas (O Cliente)
+Quando o cliente chega ao totem, ele escolhe o tipo de atendimento que precisa:
+*   **Geral (SG):** Atendimento padrão (consultas, informações gerais).
+*   **Prioritário (SP):** Destinado a idosos, gestantes, pessoas com deficiência ou autistas, respeitando a legislação de prioridades.
+*   **Exame (SE):** Um fluxo separado dedicado exclusivamente para quem vai realizar coletas ou exames clínicos.
+
+Cada vez que um botão é clicado, uma **senha única** é gerada no formato `AAMMDD-TIPO#` (ex: `260618-SG1` - Senha Geral emitida em 18 de Junho de 2026, sendo a número 1 daquele dia).
+
+### 2. 📢 Chamada de Senhas (O Atendente)
+Em uma tela interna simulando o painel do operador, o atendente clica em **"Chamar Senha"**. O sistema calcula quem é a próxima pessoa da fila de forma justa e organizada e exibe a chamada na tela, mantendo também um histórico visível de todas as últimas senhas chamadas para evitar confusões.
+
+### 3. 📊 Dashboard de Relatórios (O Administrador)
+Para quem gerencia a clínica ou o estabelecimento, o sistema oferece um painel estatístico em tempo real indicando:
+*   O volume total de atendimentos gerados.
+*   O detalhamento por tipo de senha (quantas foram Geral, Prioritária ou Exame).
+*   Isso ajuda os administradores a entenderem o perfil do público e otimizarem a quantidade de funcionários em cada setor.
+
+---
+
+## 🛠️ Tecnologias Utilizadas (E por que foram escolhidas)
+
+Para construir essa simulação e torná-la rápida, moderna e capaz de rodar tanto no navegador quanto em celulares, escolhemos as seguintes ferramentas:
+
+*   **[Angular (v16)](https://angular.io/):** O cérebro do projeto. Um framework desenvolvido pelo Google que nos permite organizar o código de forma modular, garantir que as atualizações na tela aconteçam instantaneamente (como nos painéis reais) e manter uma estrutura limpa e profissional.
+*   **[Ionic Framework (v7)](https://ionicframework.com/):** A aparência do aplicativo. Ele fornece componentes visuais modernos, transições suaves e garante que o visual se adapte perfeitamente se você abrir no celular (iOS/Android) ou no computador.
+*   **[TypeScript](https://www.typescriptlang.org/):** Garante mais segurança na escrita do código de programação, ajudando a evitar erros antes mesmo do sistema rodar.
+*   **[Cordova SQLite Storage](https://github.com/storesafe/cordova-sqlite-storage):** Um banco de dados embutido configurado para salvar os atendimentos localmente no aparelho, simulando a persistência de dados.
+
+---
+
+## 🚀 Como Executar o Projeto Localmente
+
+Siga o passo a passo simples abaixo para rodar o simulador no seu computador:
 
 ### Pré-requisitos
+Certifique-se de ter instalado em seu computador:
+1.  [Node.js](https://nodejs.org/) (versão 18 ou superior)
+2.  Um terminal de sua preferência (Prompt de Comando, PowerShell ou Terminal Git)
 
-- [Node.js](https://nodejs.org/) v18 ou superior
-- npm v9 ou superior
+---
 
-Verifique as versões instaladas:
+### Passo 1: Clonar e Acessar o Projeto
+Abra o seu terminal na pasta do projeto e certifique-se de estar na pasta que contém o arquivo `package.json`:
 ```bash
-node -v
-npm -v
+cd totem
 ```
 
-### 1. Instalar as dependências
-
+### Passo 2: Instalar as Dependências
+Baixe todas as bibliotecas necessárias para rodar o projeto executando:
 ```bash
 npm install
 ```
 
-### 2. Rodar no navegador
-
+### Passo 3: Iniciar o Servidor de Desenvolvimento
+Inicie o aplicativo com o comando:
 ```bash
 npm start
 ```
 
-Acesse em: **http://localhost:4200**
+### Passo 4: Acessar no Navegador
+Uma janela deverá abrir automaticamente. Caso não abra, acesse pelo navegador o endereço:
+**[http://localhost:4200](http://localhost:4200)**
 
-### 3. Rodar no Android (opcional)
-
-Requisitos adicionais: [Android Studio](https://developer.android.com/studio) + JDK 17+
-
-```bash
-# Gerar o build
-npm run build
-
-# Adicionar plataforma Android (apenas na primeira vez)
-npx cap add android
-
-# Sincronizar o build com o projeto nativo
-npx cap sync android
-
-# Abrir no Android Studio
-npx cap open android
-```
-
-No Android Studio, clique em **Run** para executar no emulador ou em um dispositivo físico conectado via USB.
+Pronto! Agora você pode simular a emissão, chamada e visualizar os relatórios em tempo real.
 
 ---
 
-## 🏗️ Estrutura do Projeto
-
-```
-src/
-├── app/
-│   ├── services/
-│   │   └── senhas.service.ts     # Lógica de geração, contagem e armazenamento de senhas
-│   ├── tab1/                     # Tela de emissão de senhas
-│   ├── tab2/                     # Tela de chamada de senhas (painel do atendente)
-│   ├── tab3/                     # Tela de relatórios
-│   └── tabs/                     # Navegação por abas
-├── assets/
-├── environments/
-└── theme/
-```
+## 🏗️ Estrutura do Código Principal
+Se você é desenvolvedor e quer entender como a lógica está organizada, veja os principais arquivos:
+*   [senhas.service.ts](totem/src/app/services/senhas.service.ts): Centraliza toda a regra de negócio do gerenciamento de senhas (fila de espera, contadores e geração do código único).
+*   [tab1.page.ts / html](totem/src/app/tab1/): Controla a interface do Totem de Emissão.
+*   [tab2.page.ts / html](totem/src/app/tab2/): Controla a interface da Painel de Chamadas.
+*   [tab3.page.ts / html](totem/src/app/tab3/): Controla a exibição dos Relatórios.
 
 ---
 
-## 🔑 Lógica de Geração de Senhas
-
-As senhas são geradas pelo `SenhasService` com o seguinte formato:
-
-```
-YYMMDD-TIPO#
-```
-
-| Parte | Descrição | Exemplo |
-|---|---|---|
-| `YY` | Ano com 2 dígitos | `26` |
-| `MM` | Mês com 2 dígitos | `06` |
-| `DD` | Dia com 2 dígitos | `15` |
-| `TIPO` | Tipo da senha | `SG`, `SP` ou `SE` |
-| `#` | Número sequencial do tipo | `1`, `2`, `3`... |
-
-Exemplo completo: `260615-SG3` → 3ª Senha Geral emitida no dia 15/06/2026
-
----
-
-## 📦 Scripts Disponíveis
-
-| Comando | Descrição |
-|---|---|
-| `npm start` | Inicia o servidor de desenvolvimento |
-| `npm run build` | Gera o build de produção |
-| `npm run lint` | Executa a análise de código (ESLint) |
-| `npm test` | Executa os testes unitários |
+*Projeto desenvolvido com fins educacionais para consolidação de conceitos de desenvolvimento web moderno e lógica de controle de filas.*
