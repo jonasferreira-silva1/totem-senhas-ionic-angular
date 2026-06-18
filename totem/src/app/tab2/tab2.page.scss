@@ -1,0 +1,318 @@
+// Custom Toolbar
+.custom-toolbar {
+  --background: linear-gradient(135deg, #1f2a44, #101726);
+  --color: #ffffff;
+  --border-width: 0;
+  text-align: center;
+  font-family: 'Montserrat', 'Inter', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  
+  .operator-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 800;
+    
+    .title-icon {
+      font-size: 1.4rem;
+      margin-right: 8px;
+      color: #10dc60;
+    }
+  }
+}
+
+// Page Content
+.operator-content {
+  --background: #f4f6f9;
+  font-family: 'Inter', sans-serif;
+}
+
+.operator-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 16px;
+  max-width: 600px;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+// Control Card (Chamar Senha)
+.control-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 16px rgba(31, 42, 68, 0.05);
+  border: 1px solid rgba(31, 42, 68, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  
+  .queue-status {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    
+    .icon-circle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(56, 128, 255, 0.1);
+      color: #3880ff;
+      font-size: 1.25rem;
+    }
+    
+    .status-text {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      
+      .count-badge {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #1f2a44;
+      }
+      
+      p {
+        font-size: 0.9rem;
+        color: #6c7a9c;
+        margin: 0;
+      }
+    }
+  }
+  
+  .call-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #10dc60, #0ebd52);
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 12px rgba(16, 220, 96, 0.3);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
+    &:active {
+      transform: scale(0.98);
+      box-shadow: 0 2px 6px rgba(16, 220, 96, 0.2);
+    }
+    
+    .btn-icon {
+      font-size: 1.3rem;
+    }
+  }
+}
+
+// Section Title
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1f2a44;
+  margin: 0 0 12px 0;
+  letter-spacing: 0.5px;
+}
+
+// Active Call Visor (Painel)
+.active-call-section {
+  width: 100%;
+}
+
+.active-call-card {
+  position: relative;
+  background: #1f2a44;
+  border-radius: 20px;
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(31, 42, 68, 0.2);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  
+  .active-ticket-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(56, 128, 255, 0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  
+  .active-ticket-type {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    
+    &.badge-geral {
+      background: rgba(56, 128, 255, 0.15);
+      color: #3880ff;
+      border: 1px solid rgba(56, 128, 255, 0.3);
+    }
+    
+    &.badge-prioritario {
+      background: rgba(255, 159, 26, 0.15);
+      color: #ff9f1a;
+      border: 1px solid rgba(255, 159, 26, 0.3);
+    }
+    
+    &.badge-exame {
+      background: rgba(12, 209, 232, 0.15);
+      color: #0cd1e8;
+      border: 1px solid rgba(12, 209, 232, 0.3);
+    }
+  }
+  
+  .active-ticket-number {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+  .active-ticket-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: #a0aec0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    
+    ion-icon {
+      color: #10dc60;
+      font-size: 1.1rem;
+    }
+  }
+}
+
+.active-call-placeholder {
+  background: #ffffff;
+  border: 2px dashed rgba(31, 42, 68, 0.12);
+  border-radius: 20px;
+  padding: 40px 20px;
+  text-align: center;
+  color: #8c9ba5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  
+  .placeholder-icon {
+    font-size: 2.25rem;
+    color: #cbd5e0;
+  }
+  
+  p {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #718096;
+    margin: 0;
+  }
+  
+  span {
+    font-size: 0.85rem;
+  }
+}
+
+// Called History
+.history-section {
+  width: 100%;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.history-item {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 6px rgba(31, 42, 68, 0.03);
+  border: 1px solid rgba(31, 42, 68, 0.06);
+  
+  .history-index {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #a0aec0;
+  }
+  
+  .history-number {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1f2a44;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+  .history-badge {
+    padding: 4px 10px;
+    border-radius: 30px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    
+    &.badge-geral {
+      background: rgba(56, 128, 255, 0.08);
+      color: #3880ff;
+    }
+    
+    &.badge-prioritario {
+      background: rgba(255, 159, 26, 0.08);
+      color: #ff9f1a;
+    }
+    
+    &.badge-exame {
+      background: rgba(12, 209, 232, 0.08);
+      color: #0cd1e8;
+    }
+  }
+}
+
+// Pulse active card border/shadow
+@keyframes activePulse {
+  0% { box-shadow: 0 10px 25px rgba(31, 42, 68, 0.2); }
+  50% { box-shadow: 0 10px 30px rgba(56, 128, 255, 0.35); }
+  100% { box-shadow: 0 10px 25px rgba(31, 42, 68, 0.2); }
+}
+
+.animate-pulse {
+  animation: activePulse 2s infinite ease-in-out;
+}
+
+// Fade in slide up animation for history
+.animate-slide-in {
+  animation: slideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

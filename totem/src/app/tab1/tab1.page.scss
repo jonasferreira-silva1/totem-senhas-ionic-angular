@@ -1,0 +1,253 @@
+// Custom Toolbar Styling
+.custom-toolbar {
+  --background: linear-gradient(135deg, #1f2a44, #101726);
+  --color: #ffffff;
+  --border-width: 0;
+  text-align: center;
+  font-family: 'Montserrat', 'Inter', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  
+  .kiosk-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 800;
+    
+    .title-icon {
+      font-size: 1.4rem;
+      margin-right: 8px;
+      color: #3880ff;
+    }
+  }
+}
+
+// Page Content Styling
+.kiosk-content {
+  --background: #f4f6f9;
+  font-family: 'Inter', sans-serif;
+}
+
+.kiosk-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px;
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: 100%;
+}
+
+.kiosk-header {
+  text-align: center;
+  margin-bottom: 24px;
+  
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #1f2a44;
+    margin: 0 0 8px 0;
+  }
+  
+  p {
+    font-size: 0.95rem;
+    color: #6c7a9c;
+    margin: 0;
+    line-height: 1.4;
+  }
+}
+
+// Ticket Card Layout & Animation
+.ticket-display-container {
+  width: 100%;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.ticket-card {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(31, 42, 68, 0.1);
+  padding: 24px;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  
+  .ticket-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #3880ff, #3dc2ff);
+  }
+  
+  .ticket-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #8c9ba5;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  
+  .ticket-number {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #1f2a44;
+    margin: 0;
+    letter-spacing: 1px;
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+  .ticket-divider {
+    height: 1px;
+    border-top: 2px dashed #e1e8ed;
+    margin: 18px 0;
+  }
+  
+  .ticket-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #10dc60;
+    font-weight: 600;
+    font-size: 0.85rem;
+    
+    ion-icon {
+      font-size: 1.2rem;
+      margin-right: 8px;
+      animation: pulse 1.5s infinite;
+    }
+  }
+}
+
+// Kiosk Buttons Grid
+.kiosk-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.kiosk-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid rgba(31, 42, 68, 0.08);
+  border-radius: 16px;
+  padding: 18px 20px;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(31, 42, 68, 0.04);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  
+  &:active {
+    transform: scale(0.97);
+    box-shadow: 0 2px 6px rgba(31, 42, 68, 0.08);
+  }
+
+  .card-inner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    font-size: 1.6rem;
+    transition: transform 0.2s ease;
+  }
+  
+  .card-info {
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #1f2a44;
+      margin: 0 0 4px 0;
+    }
+    
+    p {
+      font-size: 0.8rem;
+      color: #6c7a9c;
+      margin: 0;
+    }
+  }
+  
+  .arrow-indicator {
+    color: #c4cbd6;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  // Specific Card Styling
+  &.card-geral {
+    border-left: 5px solid #3880ff;
+    .icon-wrapper {
+      background: rgba(56, 128, 255, 0.1);
+      color: #3880ff;
+    }
+  }
+  
+  &.card-prioritario {
+    border-left: 5px solid #ff9f1a;
+    .icon-wrapper {
+      background: rgba(255, 159, 26, 0.1);
+      color: #ff9f1a;
+    }
+  }
+  
+  &.card-exame {
+    border-left: 5px solid #0cd1e8;
+    .icon-wrapper {
+      background: rgba(12, 209, 232, 0.1);
+      color: #0cd1e8;
+    }
+  }
+}
+
+// Animations
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.15); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.animate-pop-in {
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

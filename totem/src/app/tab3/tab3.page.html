@@ -1,0 +1,99 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="custom-toolbar">
+    <ion-title class="dashboard-title">
+      <ion-icon name="analytics-outline" class="title-icon"></ion-icon>
+      RELATÓRIOS & MÉTRICAS
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="dashboard-content">
+  <div class="dashboard-container">
+    
+    <!-- Card Principal: Total de Senhas -->
+    <div class="main-stats-card animate-fade-in">
+      <div class="main-stats-info">
+        <span>TOTAL EMITIDO</span>
+        <h2>{{ senhasService.senhasTotal }}</h2>
+        <p>Senhas geradas no totem</p>
+      </div>
+      <div class="main-stats-icon">
+        <ion-icon name="ticket-outline"></ion-icon>
+      </div>
+    </div>
+
+    <!-- Cards Secundários: Detalhamento por Tipo -->
+    <div class="sub-stats-grid">
+      <div class="stat-card card-geral">
+        <div class="stat-icon-wrapper">
+          <ion-icon name="people"></ion-icon>
+        </div>
+        <div class="stat-content">
+          <h3>{{ senhasService.senhasGeral }}</h3>
+          <p>Geral</p>
+        </div>
+      </div>
+
+      <div class="stat-card card-prioritario">
+        <div class="stat-icon-wrapper">
+          <ion-icon name="accessibility"></ion-icon>
+        </div>
+        <div class="stat-content">
+          <h3>{{ senhasService.senhasPrior }}</h3>
+          <p>Prioritária</p>
+        </div>
+      </div>
+
+      <div class="stat-card card-exame">
+        <div class="stat-icon-wrapper">
+          <ion-icon name="flask"></ion-icon>
+        </div>
+        <div class="stat-content">
+          <h3>{{ senhasService.senhasExame }}</h3>
+          <p>Exame</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Distribuição Visual com Barras de Progresso -->
+    <div class="chart-section" *ngIf="senhasService.senhasTotal > 0">
+      <h3 class="section-title">Distribuição de Senhas</h3>
+      <div class="chart-container">
+        
+        <div class="progress-item">
+          <div class="progress-labels">
+            <span class="label-name">Senha Geral</span>
+            <span class="label-value">{{ getGeralPercent() | percent:'1.0-1' }}</span>
+          </div>
+          <ion-progress-bar value="{{ getGeralPercent() }}" color="primary" class="custom-progress"></ion-progress-bar>
+        </div>
+
+        <div class="progress-item">
+          <div class="progress-labels">
+            <span class="label-name">Prioritária</span>
+            <span class="label-value">{{ getPrioritarioPercent() | percent:'1.0-1' }}</span>
+          </div>
+          <ion-progress-bar value="{{ getPrioritarioPercent() }}" color="warning" class="custom-progress"></ion-progress-bar>
+        </div>
+
+        <div class="progress-item">
+          <div class="progress-labels">
+            <span class="label-name">Exame</span>
+            <span class="label-value">{{ getExamePercent() | percent:'1.0-1' }}</span>
+          </div>
+          <ion-progress-bar value="{{ getExamePercent() }}" color="tertiary" class="custom-progress"></ion-progress-bar>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Seção de Ações / Reset -->
+    <div class="settings-section">
+      <button class="reset-btn" (click)="resetarFila()">
+        <ion-icon name="refresh-circle-outline" class="btn-icon"></ion-icon>
+        <span>Reiniciar Sistema (Reset)</span>
+      </button>
+    </div>
+
+  </div>
+</ion-content>

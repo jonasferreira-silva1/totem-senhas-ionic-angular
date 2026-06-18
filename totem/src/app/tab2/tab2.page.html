@@ -1,0 +1,72 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="custom-toolbar">
+    <ion-title class="operator-title">
+      <ion-icon name="desktop-outline" class="title-icon"></ion-icon>
+      PAINEL DO ATENDENTE
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="operator-content">
+  <div class="operator-container">
+    
+    <!-- Painel de Controle e Status da Fila -->
+    <div class="control-card">
+      <div class="queue-status">
+        <div class="icon-circle">
+          <ion-icon name="people-outline"></ion-icon>
+        </div>
+        <div class="status-text">
+          <span class="count-badge">{{ senhasService.senhasArray.length }}</span>
+          <p>senhas na fila de espera</p>
+        </div>
+      </div>
+      <button class="call-btn" (click)="chamaSenhas()">
+        <ion-icon name="megaphone-outline" class="btn-icon"></ion-icon>
+        <span>Chamar Senha</span>
+      </button>
+    </div>
+
+    <!-- Visor de Senha Atual Chamada -->
+    <div class="active-call-section">
+      <h3 class="section-title">Senha em Atendimento</h3>
+      
+      <div class="active-call-card animate-pulse" *ngIf="senhasService.senhasChamadas.length > 0">
+        <div class="active-ticket-glow"></div>
+        <div class="active-ticket-type" [ngClass]="getTicketTypeClass(senhasService.senhasChamadas[0])">
+          {{ getTicketTypeName(senhasService.senhasChamadas[0]) }}
+        </div>
+        <div class="active-ticket-number">
+          {{ senhasService.senhasChamadas[0] }}
+        </div>
+        <div class="active-ticket-footer">
+          <ion-icon name="arrow-redo-outline"></ion-icon>
+          <span>Dirija-se ao Guichê 1</span>
+        </div>
+      </div>
+      
+      <div class="active-call-placeholder" *ngIf="senhasService.senhasChamadas.length === 0">
+        <ion-icon name="hourglass-outline" class="placeholder-icon"></ion-icon>
+        <p>Nenhuma senha chamada</p>
+        <span>Aguardando o atendente iniciar a fila</span>
+      </div>
+    </div>
+
+    <!-- Histórico de Senhas Chamadas -->
+    <div class="history-section" *ngIf="senhasService.senhasChamadas.length > 1">
+      <h3 class="section-title">Últimas Chamadas</h3>
+      <div class="history-list">
+        <ng-container *ngFor="let item of senhasService.senhasChamadas; let i = index">
+          <div class="history-item animate-slide-in" *ngIf="i > 0">
+            <span class="history-index">#{{ senhasService.senhasChamadas.length - i }}</span>
+            <span class="history-number">{{ item }}</span>
+            <span class="history-badge" [ngClass]="getTicketTypeClass(item)">
+              {{ getTicketTypeNameShort(item) }}
+            </span>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+  </div>
+</ion-content>

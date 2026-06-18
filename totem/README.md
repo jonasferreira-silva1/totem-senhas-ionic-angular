@@ -1,5 +1,9 @@
 # Totem de Senhas 🎫
 
+<p align="center">
+  <img src="src/assets/icon/Totem.png" alt="Totem de Senhas Logo" width="150" height="150">
+</p>
+
 Aplicativo mobile desenvolvido com **Ionic Framework + Angular**, que simula um sistema de gerenciamento de filas de atendimento, similar aos totens utilizados em hospitais, clínicas e repartições públicas. O app permite emitir senhas por tipo, chamar senhas na ordem da fila e visualizar relatórios de atendimento.
 
 ---
